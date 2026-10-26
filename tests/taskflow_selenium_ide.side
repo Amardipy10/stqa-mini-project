@@ -1,0 +1,232 @@
+{
+  "id": "e4b1a8d0-7a2e-4b95-a134-8c85a12d1001",
+  "version": "2.0",
+  "name": "TaskFlow_STQA_Selenium_IDE",
+  "url": "http://localhost:5500",
+  "tests": [
+    {
+      "id": "tc001-add-valid-task",
+      "name": "TC-001: Add Task Successfully",
+      "commands": [
+        {
+          "id": "cmd-1",
+          "comment": "Open TaskFlow application",
+          "command": "open",
+          "target": "/app/index.html",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-2",
+          "comment": "Click task title input",
+          "command": "click",
+          "target": "id=task-title",
+          "targets": [["id=task-title", "id"], ["css=#task-title", "css:finder"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-3",
+          "comment": "Type task title",
+          "command": "type",
+          "target": "id=task-title",
+          "targets": [["id=task-title", "id"]],
+          "value": "Complete STQA Documentation"
+        },
+        {
+          "id": "cmd-4",
+          "comment": "Type description",
+          "command": "type",
+          "target": "id=task-description",
+          "targets": [["id=task-description", "id"]],
+          "value": "Prepare test plan, bug taxonomy, and reports"
+        },
+        {
+          "id": "cmd-5",
+          "comment": "Select priority high",
+          "command": "select",
+          "target": "id=task-priority",
+          "targets": [["id=task-priority", "id"]],
+          "value": "value=high"
+        },
+        {
+          "id": "cmd-6",
+          "comment": "Click Add Task button",
+          "command": "click",
+          "target": "id=add-task-btn",
+          "targets": [["id=add-task-btn", "id"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-7",
+          "comment": "Verify task appears in task list",
+          "command": "assertText",
+          "target": "css=.task-title",
+          "targets": [["css=.task-title", "css:finder"]],
+          "value": "Complete STQA Documentation"
+        }
+      ]
+    },
+    {
+      "id": "tc002-empty-title-validation",
+      "name": "TC-002: Empty Title Validation",
+      "commands": [
+        {
+          "id": "cmd-1",
+          "comment": "Open application",
+          "command": "open",
+          "target": "/app/index.html",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-2",
+          "comment": "Clear title input",
+          "command": "type",
+          "target": "id=task-title",
+          "targets": [["id=task-title", "id"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-3",
+          "comment": "Submit form without title",
+          "command": "click",
+          "target": "id=add-task-btn",
+          "targets": [["id=add-task-btn", "id"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-4",
+          "comment": "Verify validation error appears",
+          "command": "assertText",
+          "target": "id=title-error",
+          "targets": [["id=title-error", "id"]],
+          "value": "Task title is required"
+        }
+      ]
+    },
+    {
+      "id": "tc013-toggle-task-complete",
+      "name": "TC-013: Toggle Task Completion",
+      "commands": [
+        {
+          "id": "cmd-1",
+          "comment": "Open application",
+          "command": "open",
+          "target": "/app/index.html",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-2",
+          "comment": "Add task to toggle",
+          "command": "type",
+          "target": "id=task-title",
+          "targets": [["id=task-title", "id"]],
+          "value": "Review Test Matrix"
+        },
+        {
+          "id": "cmd-3",
+          "comment": "Click Add Task",
+          "command": "click",
+          "target": "id=add-task-btn",
+          "targets": [["id=add-task-btn", "id"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-4",
+          "comment": "Toggle checkbox",
+          "command": "click",
+          "target": "css=[data-action='toggle']",
+          "targets": [["css=[data-action='toggle']", "css:finder"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-5",
+          "comment": "Verify completed stat updates to 1",
+          "command": "assertText",
+          "target": "id=stat-done",
+          "targets": [["id=stat-done", "id"]],
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "tc024-filter-pending-tasks",
+      "name": "TC-024: Filter Tasks",
+      "commands": [
+        {
+          "id": "cmd-1",
+          "comment": "Open application",
+          "command": "open",
+          "target": "/app/index.html",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-2",
+          "comment": "Click Pending filter tab",
+          "command": "click",
+          "target": "id=nav-pending",
+          "targets": [["id=nav-pending", "id"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-3",
+          "comment": "Verify page title updates",
+          "command": "assertText",
+          "target": "id=page-title",
+          "targets": [["id=page-title", "id"]],
+          "value": "Pending Tasks"
+        }
+      ]
+    },
+    {
+      "id": "tc036-theme-toggle",
+      "name": "TC-036: Theme Mode Toggle",
+      "commands": [
+        {
+          "id": "cmd-1",
+          "comment": "Open application",
+          "command": "open",
+          "target": "/app/index.html",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-2",
+          "comment": "Click theme toggle button",
+          "command": "click",
+          "target": "id=theme-toggle",
+          "targets": [["id=theme-toggle", "id"]],
+          "value": ""
+        },
+        {
+          "id": "cmd-3",
+          "comment": "Verify data-theme attribute is dark",
+          "command": "assertAttribute",
+          "target": "xpath=//html@data-theme",
+          "targets": [],
+          "value": "dark"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "suite-core-features",
+      "name": "TaskFlow Core Feature Test Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "tc001-add-valid-task",
+        "tc002-empty-title-validation",
+        "tc013-toggle-task-complete",
+        "tc024-filter-pending-tasks",
+        "tc036-theme-toggle"
+      ]
+    }
+  ],
+  "urls": ["http://localhost:5500"],
+  "plugins": []
+}
